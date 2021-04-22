@@ -10227,3 +10227,6 @@ form .row:first-child .floating-label-form-group {
 .copyright {
   background-color: #1a252f;
 }
+.container-top-margin {
+  padding-top: calc(6rem + 104px);
+}
