@@ -15,7 +15,7 @@ class CreatePortfolioimagesTable extends Migration
     {
         Schema::create('portfolioimages', function (Blueprint $table) {
             $table->id();
-            $table->integer('portfolio_id')->unsigned();
+            $table->foreignId('portfolio_id')->references('id')->on('portfolio')->onDelete('cascade');
             $table->string('FileName');
             $table->string('OriginalFileName');
             $table->string('URL');

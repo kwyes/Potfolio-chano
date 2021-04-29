@@ -23,7 +23,9 @@ Route::get('/logout', 'App\Http\Controllers\Auth\LoginController::class@logout')
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/portfolioupload', [App\Http\Controllers\PortfolioController::class, 'index'])->name('portfolioupload');
 Route::get('/create', [App\Http\Controllers\PortfolioController::class, 'create'])->name('portfolio.create');
-Route::post('/create', [App\Http\Controllers\PortfolioController::class, 'store'])->name('portfolio.store');
-Route::get('/view', [App\Http\Controllers\PortfolioController::class, 'view'])->name('portfolio.view');
+Route::post('/create', [App\Http\Controllers\PortfolioController::class, 'store']);
+Route::get('list', [App\Http\Controllers\PortfolioController::class, 'show'])->name('portfolio.list');
+Route::get('delete/{id}', [App\Http\Controllers\PortfolioController::class, 'delete']);
+Route::get('edit/{id}', [App\Http\Controllers\PortfolioController::class, 'showData']);
+Route::post('/edit', [App\Http\Controllers\PortfolioController::class, 'update']);

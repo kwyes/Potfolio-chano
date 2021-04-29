@@ -44,7 +44,7 @@
                 <ul class="navbar-nav ml-auto">
                     @if (Auth::check())
                     <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('portfolioupload') }}">{{ __('Portfolio Upload') }}</a>
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/list">{{ __('Portfolio Upload') }}</a>
                     </li>
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('logout') }}"

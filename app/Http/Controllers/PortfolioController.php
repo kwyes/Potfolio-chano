@@ -17,32 +17,13 @@ class PortfolioController extends Controller
         $this->portfolioimages = new portfolioimage();
     }
 
-    public function index()
-    {
-      return view('portfolio.view');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('portfolio.create');
     }
 
-    public function view()
-    {
-        return view('portfolio.view');
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $portfolio = $this->portfolio->create([
@@ -52,59 +33,48 @@ class PortfolioController extends Controller
         
         $portfolioimages = $this->portfolioimages->create([
             'portfolio_id' => $portfolio->id,
-            'FileName' => 'test',
-            'OriginalFileName' => 'test',
+            'FileName' => $request->title.'.png',
+            'OriginalFileName' => $request->title.'.png',
             'URL' => 'test',
         ]);
 
-        
-        
-        return view('portfolio.view');
+        $portfolioimages = $this->portfolioimages->create([
+            'portfolio_id' => $portfolio->id,
+            'FileName' => $request->title.'.jpg',
+            'OriginalFileName' => $request->title.'.jpg',
+            'URL' => 'test',
+        ]);
 
+        return redirect('list');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Portfolio  $portfolio
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Portfolio $portfolio)
-    {
-        //
+    public function show()
+    {   
+
+        $data = Portfolio::all();
+        return view('portfolio.list',['portfolio'=>$data]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Portfolio  $portfolio
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Portfolio $portfolio)
-    {
-        //
+    public function delete($id)
+    {   
+        $data = Portfolio::find($id);        
+        $data->delete();
+        return redirect('list');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Portfolio  $portfolio
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Portfolio $portfolio)
-    {
-        //
+    public function showData($id) {
+        $data = Portfolio::find($id);        
+        $portfolioimages =Portfolioimage::where('portfolio_id', $id)->get();               
+        return $portfolioimages;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Portfolio  $portfolio
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Portfolio $portfolio)
-    {
-        //
+    public function update(Request $request){
+        $data = Portfolio::find($request->id);
+        $data->title = $request->title;
+        $data->description = $request->description;
+        $data->save();
+        return redirect('list');
     }
+
+   
 }
