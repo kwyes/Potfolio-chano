@@ -29,22 +29,24 @@ class PortfolioController extends Controller
         $portfolio = $this->portfolio->create([
             'title' => $request->title,
             'description' => $request->description,
-        ]);        
-        
-        $portfolioimages = $this->portfolioimages->create([
-            'portfolio_id' => $portfolio->id,
-            'FileName' => $request->title.'.png',
-            'OriginalFileName' => $request->title.'.png',
-            'URL' => 'test',
-        ]);
+        ]);  
 
-        $portfolioimages = $this->portfolioimages->create([
-            'portfolio_id' => $portfolio->id,
-            'FileName' => $request->title.'.jpg',
-            'OriginalFileName' => $request->title.'.jpg',
-            'URL' => 'test',
-        ]);
+        if ($request->hasfile('filenames')) {
+            foreach ($request->file('filenames') as $file) {
 
+                
+                $name = $file->getClientOriginalName();
+                $file->move(public_path() . '/Portfolio/', $name);
+                $data[] = $name;
+
+                $portfolioimages = $this->portfolioimages->create([
+                    'portfolio_id' => $portfolio->id,
+                    'FileName' => $name,
+                    'OriginalFileName' => $name,
+                    'URL' => '/Portfolio/'.$name,
+                ]);
+            }
+        }
         return redirect('list');
     }
 
