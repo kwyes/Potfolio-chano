@@ -16,7 +16,7 @@
                     <textarea name="description" class="form-control" cols="30" rows="10"></textarea>
                   </div>
                   <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                    <label for="exampleFormControlTextarea1" class="form-label">File</label>
                     <input type="file" name="filenames[]" class="myfrm form-control" multiple>
                   </div>
                   <button type="submit" class="btn btn-success">SAVE</button>

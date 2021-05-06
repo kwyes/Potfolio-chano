@@ -20,20 +20,24 @@ class PortfolioController extends Controller
     
     public function create()
     {
+
         return view('portfolio.create');
     }
 
 
     public function store(Request $request)
     {
+       
+        $main = '/Portfolio/'.$request->file('filenames')[0]->getClientOriginalName();
+
         $portfolio = $this->portfolio->create([
             'title' => $request->title,
             'description' => $request->description,
+            'mainimg' => $main,
         ]);  
 
         if ($request->hasfile('filenames')) {
             foreach ($request->file('filenames') as $file) {
-
                 
                 $name = $file->getClientOriginalName();
                 $file->move(public_path() . '/Portfolio/', $name);
@@ -47,6 +51,7 @@ class PortfolioController extends Controller
                 ]);
             }
         }
+
         return redirect('list');
     }
 
@@ -67,7 +72,7 @@ class PortfolioController extends Controller
     public function showData($id) {
         $data = Portfolio::find($id);        
         $portfolioimages =Portfolioimage::where('portfolio_id', $id)->get();               
-        return $portfolioimages;
+        return view('portfolio.edit',['portfolio'=>$data, 'portfolioimage'=>$portfolioimages]);
     }
 
     public function update(Request $request){
@@ -76,6 +81,11 @@ class PortfolioController extends Controller
         $data->description = $request->description;
         $data->save();
         return redirect('list');
+    }
+
+    public function previewImgList() {
+        $data = Portfolio::all();
+        return view('portfolio', ['portfoliolist'=>$data]);
     }
 
    
