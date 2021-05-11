@@ -4,7 +4,7 @@
 <header class="masthead bg-primary text-white text-center">
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="{{asset('img/avataaars.svg')}}" alt="" />
+        <img class="masthead-avatar mb-5 rounded-circle" src="{{asset('img/profile.png')}}" alt="" />
         <!-- Masthead Heading-->
         <h1 class="masthead-heading text-uppercase mb-0">CHANHO LEE</h1>
         <!-- Icon Divider-->
@@ -62,14 +62,14 @@
         </div>
         <!-- About Section Content-->
         <div class="row">
-            <div class="col-lg-4 ml-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
-            <div class="col-lg-4 mr-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+            <div class="col-lg-4 ml-auto"><p class="lead">I am a PHP Developer. Mostly, I do backend stuff but I am capable of doing front end part too. </p></div>
+            <div class="col-lg-4 mr-auto"><p class="lead">Due to Confidentiality Agreement, I am using company github account. But, If you request, I can show you some part of that. Thanks.</p></div>
         </div>
         <!-- About Section Button-->
         <div class="text-center mt-4">
-            <a class="btn btn-xl btn-outline-light" href="https://startbootstrap.com/theme/freelancer/">
+            <a class="btn btn-xl btn-outline-light" href="{{asset('img/ChanHoLee_Resume.pdf')}}" download>
                 <i class="fas fa-download mr-2"></i>
-                Free Download!
+                Resume
             </a>
         </div>
     </div>
@@ -89,7 +89,8 @@
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
-                <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                <form action="{{route('contact.save')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Name</label>
@@ -103,18 +104,11 @@
                             <input class="form-control" id="email" type="email" placeholder="Email Address" required="required" data-validation-required-message="Please enter your email address." />
                             <p class="help-block text-danger"></p>
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                            <label>Phone Number</label>
-                            <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required="required" data-validation-required-message="Please enter your phone number." />
-                            <p class="help-block text-danger"></p>
-                        </div>
-                    </div>
+                    </div>                   
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-2">
                             <label>Message</label>
-                            <textarea class="form-control" id="message" rows="5" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
+                            <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required="required" data-validation-required-message="Please enter a message."></textarea>
                             <p class="help-block text-danger"></p>
                         </div>
                     </div>
@@ -134,35 +128,28 @@
             <div class="col-lg-4 mb-5 mb-lg-0">
                 <h4 class="text-uppercase mb-4">Location</h4>
                 <p class="lead mb-0">
-                    2215 John Daniel Drive
+                    Burnaby
                     <br />
-                    Clark, MO 65243
+                    Canada, V5J0G9
                 </p>
             </div>
             <!-- Footer Social Icons-->
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <h4 class="text-uppercase mb-4">Around the Web</h4>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
+                <h4 class="text-uppercase mb-4">Social</h4>                
                 <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a>
+                <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-github"></i></a>
             </div>
             <!-- Footer About Text-->
             <div class="col-lg-4">
-                <h4 class="text-uppercase mb-4">About Freelancer</h4>
+                <h4 class="text-uppercase mb-4">Application Developer</h4>
                 <p class="lead mb-0">
-                    Freelance is a free to use, MIT licensed Bootstrap theme created by
-                    <a href="http://startbootstrap.com">Start Bootstrap</a>
-                    .
+                                        
                 </p>
             </div>
         </div>
     </div>
 </footer>
-<!-- Copyright Section-->
-<div class="copyright py-4 text-center text-white">
-    <div class="container"><small>Copyright © Your Website 2020</small></div>
-</div>
+
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
 <div class="scroll-to-top d-lg-none position-fixed">
     <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top"><i class="fa fa-chevron-up"></i></a>

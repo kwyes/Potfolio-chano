@@ -20,6 +20,7 @@ Route::get('/', [App\Http\Controllers\MainController::class, 'previewImgList'])-
 Auth::routes();
 
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController::class@logout');
+Route::post('', [App\Http\Controllers\ContactController::class, 'send'])->name('contact.save');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/create', [App\Http\Controllers\PortfolioController::class, 'create'])->name('portfolio.create');
