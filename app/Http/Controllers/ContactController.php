@@ -17,7 +17,7 @@ class ContactController extends Controller
             'user_query' => $request->get('message'),
         ), function($message) use ($request){
             $message->from($request->email);
-            $message->to('kwyes2@hotmail.com');
+            $message->to('kwyes3@gmail.com');
         });      
 
       return back()->with('success', 'Thanks for contacting!');
