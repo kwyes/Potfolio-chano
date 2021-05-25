@@ -12,6 +12,8 @@ class Portfolio extends Model
     protected $fillable = [
         'title',
         'description',
+        'link',
+        'github',
         'mainimg'
     ];
 }

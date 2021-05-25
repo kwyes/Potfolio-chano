@@ -6,8 +6,8 @@
 
         <div class="col-12">
             <h1 class="font-lg font-weight-bold mb-2">
-                My Child Mobile Applicaiton (Android, Ios)
-                </h1>
+                {{$portfolio['title'] }}
+            </h1>
                 <p class="font-m">
                 Providing Child grade, participation, School Message, School Video Pictures
                 </p>
@@ -37,20 +37,12 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-            </div>
-        </div>
-          <div class="col-12">
-            <h4 class="desc-right-title">Key Functions</h4>
-            <ul>
-              <li>Call external API data</li>
-              <li>DOM</li>
-            </ul>
+              </div>
           </div>
+          
           <div class="col-12">
-            <!-- Codepen code -->
-            <div class="cp_embed_wrapper"><iframe allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" class="cp_embed_iframe " frameborder="0" height="486" width="100%" name="cp_embed_1" scrolling="no" src="https://codepen.io/amysujunglee/embed/preview/qwyOJb?height=486&amp;theme-id=0&amp;default-tab=html%2Cresult&amp;user=amysujunglee&amp;slug-hash=qwyOJb&amp;preview=true&amp;pen-title=Random%20Quote%20Generator%20using%20an%20external%20API&amp;name=cp_embed_1" style="width: 100%; overflow:hidden; display:block;" title="Random Quote Generator using an external API" loading="lazy" id="cp_embed_qwyOJb"></iframe></div>
-            <script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
-            <!-- End of Codepen code -->
+            <a href="{{$portfolio['github']}}" class="btn btn-primary" target="_blank">Source Code</a>
+            <a href="{{$portfolio['link']}}" class="btn btn-primary" target="_blank">Link</a>
           </div>
         </div>
       </main>

@@ -33,6 +33,8 @@ class PortfolioController extends Controller
         $portfolio = $this->portfolio->create([
             'title' => $request->title,
             'description' => $request->description,
+            'link' => $request->link,
+            'github' => $request->github,
             'mainimg' => $main,
         ]);  
 
@@ -79,6 +81,8 @@ class PortfolioController extends Controller
         $data = Portfolio::find($request->id);
         $data->title = $request->title;
         $data->description = $request->description;
+        $data->link = $request->link;
+        $data->github = $request->github;
         $data->save();
         return redirect('list');
     }
