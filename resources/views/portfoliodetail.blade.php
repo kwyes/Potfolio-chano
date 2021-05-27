@@ -9,7 +9,7 @@
                 {{$portfolio['title'] }}
             </h1>
                 <p class="font-m">
-                Providing Child grade, participation, School Message, School Video Pictures
+                  
                 </p>
                 <hr>
         </div>
